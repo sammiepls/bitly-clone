@@ -1,10 +1,26 @@
 /*General*/
+body {
+  font-family: 'Karla',sans-serif;
+  font-size: 16px;
+}
 h1 {
   text-transform: uppercase;
+  font-family: 'Karla',sans-serif;
+  font-weight: 700;
 }
 /*Header*/
 .logo img {
   width: 140px;
+}
+.logo::after {
+    content: '- Clone';
+    font-family: 'Karla',sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: -8px;
+    left: 25px;
+    font-size: 20px;
 }
 .navbar-default {
   border:none;
@@ -33,30 +49,37 @@ h1 {
 }
 .hero-wrapper h1 {
   font-size: 3em;
+  letter-spacing: 2;
 }
 
 /*Form*/
-
+form {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
 .url-form {
-  width: 60%;
-  padding: 10px;
-  border: 1px solid #ee6123;
+  width: 50%;
+  padding: 15px;
   transition: .3s all ease;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #fff;
 }
 .url-form:focus {
   background-color: #fef7f4;
   color: #ee6123;
+  border: 1px solid #ee6123;
 }
 .btn-submit {
-    padding: 10px;
-    border-radius: 0;
+    padding: 15px;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #ee6123;
     background: #ee6123;
     color: #fff;
     text-transform: uppercase;
-    border: 1px solid #ee6123;
     margin-left: -3px;
     transition: .3s all ease;
 }
 .btn-submit:hover,.btn-submit:focus {
   background: #e45212;
+  border: 1px solid #ee6123;
 }

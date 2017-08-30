@@ -32,15 +32,39 @@
      </div>
    </div>
   </section>
-<section class='container'>
-  <div class='row'>
-    <div class='col-xs-12 text-center'>
-       <div id="url-output">
-         <h1>Your shortened url is:</h1>
-         
+
+  <section id="url-output" class='container'>
+    <div class='row'>
+      <div class='col-xs-12 text-center'>
+         <div class='url-output-wrapper'>
+           <h1>Your shortened url is:</h1>
+
+           <%= @errors if @errors %>
+
+           <table>
+             <thead>
+               <tr>
+                 <th>No</th>
+                 <th>Original URL</th>
+                 <th>Short URL</th>
+                 <th>Click Count</th>
+               </tr>
+             </thead>
+             <tbody>
+               <% @url.each do |x| %>
+               <tr>
+                 <td><%=x.id %></td>
+                 <td><%=x.ori_url %></td>
+                 <td><a href="<%=x.ori_url %>"><%=x.short_url %></a></td>
+                 <td></td>
+               </tr>
+               <% end %>
+             </tbody>
+           </table>
+
+         </div>
        </div>
      </div>
-   </div>
- </section>
+   </section>
 
 </main>
