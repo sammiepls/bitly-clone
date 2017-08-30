@@ -1,0 +1,62 @@
+/*General*/
+h1 {
+  text-transform: uppercase;
+}
+/*Header*/
+.logo img {
+  width: 140px;
+}
+.navbar-default {
+  border:none;
+  background: transparent;
+}
+.nav-flex {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+}
+.nav-item {
+    color: #fff;
+    margin-right: 15px;
+}
+
+/*Hero*/
+.hero-bg {
+  background: url(/img/hero.jpg);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+.hero-wrapper {
+  margin-top: 10%;
+  color: #fff;
+}
+.hero-wrapper h1 {
+  font-size: 3em;
+}
+
+/*Form*/
+
+.url-form {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ee6123;
+  transition: .3s all ease;
+}
+.url-form:focus {
+  background-color: #fef7f4;
+  color: #ee6123;
+}
+.btn-submit {
+    padding: 10px;
+    border-radius: 0;
+    background: #ee6123;
+    color: #fff;
+    text-transform: uppercase;
+    border: 1px solid #ee6123;
+    margin-left: -3px;
+    transition: .3s all ease;
+}
+.btn-submit:hover,.btn-submit:focus {
+  background: #e45212;
+}
