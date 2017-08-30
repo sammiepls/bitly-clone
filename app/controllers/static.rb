@@ -7,8 +7,7 @@ post '/urls' do
   url = Url.new(ori_url:params[:ori_url])
   if url.save
     p "#{url.short_url}"
-    redirect "/"
-
+    url.to_json
   else
     @url = Url.all
     @errors = url.errors.messages[:url].join.capitalize + " " + url.errors.messages[:ori_url].join.capitalize
