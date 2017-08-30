@@ -26,6 +26,9 @@ h1 {
   border:none;
   background: transparent;
 }
+.navbar-fixed-top {
+  position: absolute;
+}
 .nav-flex {
   display: flex;
   align-items: center;
@@ -76,10 +79,20 @@ form {
     background: #ee6123;
     color: #fff;
     text-transform: uppercase;
-    margin-left: -3px;
+    margin-left: -4px;
     transition: .3s all ease;
 }
 .btn-submit:hover,.btn-submit:focus {
   background: #e45212;
   border: 1px solid #ee6123;
+}
+
+/*Table*/
+
+thead {
+  background: #ee6123;
+  color: #fff;
+}
+th, td {
+    padding: 10px;
 }

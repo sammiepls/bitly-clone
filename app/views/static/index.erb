@@ -36,12 +36,10 @@
   <section id="url-output" class='container'>
     <div class='row'>
       <div class='col-xs-12 text-center'>
-         <div class='url-output-wrapper'>
-           <h1>Your shortened url is:</h1>
 
-           <%= @errors if @errors %>
+         
 
-           <table>
+           <table class='table'>
              <thead>
                <tr>
                  <th>No</th>
@@ -50,19 +48,20 @@
                  <th>Click Count</th>
                </tr>
              </thead>
-             <tbody>
-               <% @url.each do |x| %>
-               <tr>
-                 <td><%=x.id %></td>
-                 <td><%=x.ori_url %></td>
-                 <td><a href="<%=x.ori_url %>"><%=x.short_url %></a></td>
-                 <td></td>
-               </tr>
+             <tbody class='table-hover'>
+               <% if @url.length != nil %>
+                 <% @url.each do |x| %>
+                 <tr>
+                   <td><%=x.id %></td>
+                   <td><%=x.ori_url %></td>
+                   <td><a target="_blank" href="<%=x.short_url %>"><%=x.short_url %></a></td>
+                   <td><%=x.click_count%></td>
+                 </tr>
+                 <% end %>
                <% end %>
              </tbody>
            </table>
 
-         </div>
        </div>
      </div>
    </section>
