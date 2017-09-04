@@ -26,5 +26,5 @@ get '/:short_url' do
   { success: true, message: url }.to_json
   url.save
   # == Non-Ajax ==
-  # redirect "#{url.ori_url}"
+  redirect "#{url.ori_url}"
 end
