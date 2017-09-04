@@ -2,13 +2,13 @@
   <div class='container'>
     <div class='row nav-flex'>
       <div class='logo col-md-2'>
-        <img src="img/logo.png" alt="Bitly clone logo" width="140">
+        <a href="/"><img src="img/logo.png" alt="Bitly clone logo" width="140"></a>
       </div>
       <div class='col-md-10'>
         <ul class='nav navbar-nav'>
-          <li class='nav-item'>Link</li>
-          <li class='nav-item'>Link</li>
-          <li class='nav-item'>Link</li>
+          <li class='nav-item'><a href="#">Link</a></li>
+          <li class='nav-item'><a href="#">Link</a></li>
+          <li class='nav-item'><a href="#">Link</a></li>
         </ul>
       </div>
     </div>
@@ -23,24 +23,54 @@
           <div class='col-xs-12 text-center'>
             <h1>Welcome to bitly</h1>
             <p>We're gonna make long stuff shorter. Yay!</p>
-            <form action="/urls" method="post">
+            <form id="url-form" action="/urls" method="post">
               <input class='url-form' type="text" name="ori_url" placeholder="Enter URL">
-              <input class='btn-submit' type="submit" value="Submit">
+              <input id="shorten-btn" class='btn-submit' type="submit" value="Shorten">
             </form>
         </div>
       </div>
      </div>
    </div>
   </section>
-<section class='container'>
-  <div class='row'>
-    <div class='col-xs-12 text-center'>
-       <div id="url-output">
-         <h1>Your shortened url is:</h1>
-         
+
+  <section id="url-output" class='container'>
+    <div class='row'>
+      <div class='col-xs-12 text-center'>
+
+        <div id='url-output-wrapper'>
+          <h1 id="heading"></h1>
+          <a id="url-output-link"></a>
+          <%= @errors if @errors %>
+        </div>
+
+        <div id='history-wrapper'>
+          <h1>Your history</h1>
+             <table id="url-table" class='table table-hover table-striped'>
+               <thead>
+                 <tr>
+                   <th>No</th>
+                   <th>Original URL</th>
+                   <th>Short URL</th>
+                   <th>Click Count</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <% if @url.length != nil %>
+                   <% @url.each do |x| %>
+                   <tr>
+                     <td><%=x.id %></td>
+                     <td><%=x.ori_url %></td>
+                     <td><a target="_blank" href="<%=x.short_url %>"><%=x.short_url %></a></td>
+                     <td><%=x.click_count%></td>
+                   </tr>
+                   <% end %>
+                 <% end %>
+               </tbody>
+             </table>
+           </div>
+
        </div>
      </div>
-   </div>
- </section>
+   </section>
 
 </main>
