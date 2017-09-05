@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Ruby Version
 # ruby "2.2.1"
 
+# Adding ActiveRecord Import
+gem "activerecord-import", ">= 0.2.0"
+
 # Adding Sinatra Drivers
 gem 'sinatra'
 gem 'sinatra-contrib'

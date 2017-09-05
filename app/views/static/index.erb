@@ -56,12 +56,13 @@
                </thead>
                <tbody>
                  <% if @url.length != nil %>
-                   <% @url.each do |x| %>
+                   <% @url.order('ID ASC').each do |x| %>
                    <tr>
                      <td><%=x.id %></td>
                      <td><%=x.ori_url %></td>
-                     <td><a target="_blank" href="<%=x.short_url %>"><%=x.short_url %></a></td>
-                     <td><%=x.click_count%></td>
+                     <td><a target="_blank" href="<%=x.short_url%>"><%=x.short_url %></a></td>
+                     <!-- Here we add an id to our click_count counter so we can target it -->
+                     <td id="<%= x.id %>"><%=x.click_count%></td>
                    </tr>
                    <% end %>
                  <% end %>

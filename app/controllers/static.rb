@@ -1,5 +1,5 @@
 get '/' do
-  @url = Url.all
+  @url = Url.all.limit(50000)
   erb :"static/index"
 end
 
@@ -17,14 +17,15 @@ post '/urls' do
   end
 end
 
-# i.e. /q6bdaams[
 get '/:short_url' do
-  # redirect to appropriate "long" URL
   url = Url.find_by(short_url:params["short_url"])
-
   url.click_count += 1
-  { success: true, message: url }.to_json
   url.save
+  { success: true, message: url }.to_json
+
   # == Non-Ajax ==
-  redirect "#{url.ori_url}"
+  # url = Url.find_by(short_url:params["short_url"])
+  # url.click_count += 1
+  # url.save
+  # redirect "#{url.ori_url}"
 end

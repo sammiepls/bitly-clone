@@ -13,26 +13,32 @@ $(document).ready(function(){
        not_json = JSON.parse(data);
        if(not_json.success){
          $("#heading").html("Your shortened url is:");
+         $("#url-output-link").css("opacity","1");
          $("#url-output-link").html(not_json.message.short_url);
          $("#url-output-link").attr("href", not_json.message.short_url);
+         $("#url-output-link").attr("target", "_blank");
+
          $("#history-wrapper").css("opacity","1");
+         $("#error-msg").remove();
          $('#url-table tbody').append('\
            <tr>\
            <td>' + not_json.message.id +'</td>\
            <td>' + not_json.message.ori_url +'</td>\
            <td><a target="_blank" href="'+ not_json.message.short_url +'">' + not_json.message.short_url +'</a></td>\
-           <td class="click_count">' + not_json.message.click_count +'</td>\
+           <td id='+ not_json.message.id +'>' + not_json.message.click_count +'</td>\
            </tr>\
          ');
          $("#url-output-wrapper").css("opacity","1");
          showHistory();
+
+
        } else {
 
          error = JSON.parse(data)
         $("#url-output-wrapper").css("opacity","1");
          $("#heading").html("There was an error!");
          $("#url-output-link").css("opacity","0");
-         $("#url-output-wrapper").append('<p>' + error.message.url +'</p>');
+         $("#url-output-wrapper").append('<p id="error-msg">' + error.message.url +'</p>');
        }
       }
       }); // end of function .ajax
@@ -46,25 +52,30 @@ function showHistory(){
   }
 }
 
-// $(document).ready(function(){
-//   $('td a').click(function(){
-//     $(".click-count").html(function() {
-//       $.ajax({
-//         url: '/:short_url',
-//         method: 'GET',
-//         data: $(this).serialize(),
-//        success: function(data){
-//          not_json = JSON.parse(data);
-//          debugger
-//          window.open(not_json.message.short_url, '_blank')
-//          $('click_count').append('\
-//            <td class="click_count">' + not_json.message.click_count +'</td>\
-//          ');
-//        }
-//       });
-//     });
-//   });
-// });
+$(document).ready(function(){
+  $('#url-output-link, td a').click(function(e){
+    debugger
+    // had to prevent the default htmls
+      e.preventDefault();
+    // this short_url variable gets the gibberish from the a tag
+    url_link = this;
+    short_url = "/" + this.innerHTML;
+      $.ajax({
+        url: short_url,
+        method: 'GET',
+        data: $(this).serialize(),
+       success: function(data){
+         not_json = JSON.parse(data);
+        // This finds the element by id #id
+         $("#" + not_json.message.id).html(not_json.message.click_count);
+        //  this opens the new window with the link
+         window.open(not_json.message.ori_url);
+       }
+    });
+  });
+});
+
+
 // $(document).ready(function(){
 //   $('td a').click(function(){
 //     $(".click-count").html(function() {
